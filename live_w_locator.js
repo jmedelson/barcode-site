@@ -305,7 +305,7 @@ $(function() {
     })
     $('#modal-confirm').click(function(){
         console.log("CODE LOGGED")
-        appendSheet(barcode)
+        appendSheet(App.lastResult)
         $("#myModal").hide()
         App.init();
     })
