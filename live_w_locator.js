@@ -282,9 +282,13 @@ $(function() {
 
     Quagga.onDetected(function(result) {
         var code = result.codeResult.code;
-
         if (App.lastResult !== code) {
             App.lastResult = code;
+            console.log(code);
+            Quagga.stop()
+            $('#scanned-code').innerHTML = code;
+            $('$myModal').show();
+            $('modal-image').css("background-image","url(" +canvas.toDataURL()+")")
             var $node = null, canvas = Quagga.canvas.dom.image;
 
             $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
