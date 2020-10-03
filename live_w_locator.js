@@ -298,15 +298,15 @@ $(function() {
             $("#result_strip ul.thumbnails").prepend($node);
         }
     });
+    $('#modal-back').click(function(){
+        $("#myModal").hide()
+        App.init();
+    })
+    $('#modal-confirm').click(function(){
+        console.log("CODE LOGGED")
+        $("#myModal").hide()
+        App.init();
+    })
 
 });
 
-$('#modal-back').click(function(){
-    $("#myModal").hide()
-    App.init();
-})
-$('#modal-confirm').click(function(){
-    console.log("CODE LOGGED")
-    $("#myModal").hide()
-    App.init();
-})
