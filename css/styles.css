@@ -338,6 +338,8 @@ i.icon-24-scan {
 
 #modal-image{
   max-width: 90%;
-  max-height: 50%;
-  object-fit: contain;
+  height: 50vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: auto;
 }
