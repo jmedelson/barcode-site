@@ -298,7 +298,19 @@ $(function() {
             $("#result_strip ul.thumbnails").prepend($node);
         }
     });
-    var CLIENT_ID = '848398558010-6tk577vios00fvgkl94p8mv1a4mbthe5.apps.googleusercontent.com';
+    
+    $('#modal-back').click(function(){
+        $("#myModal").hide()
+        App.init();
+    })
+    $('#modal-confirm').click(function(){
+        console.log("CODE LOGGED")
+        $("#myModal").hide()
+        App.init();
+    })
+
+});
+var CLIENT_ID = '848398558010-6tk577vios00fvgkl94p8mv1a4mbthe5.apps.googleusercontent.com';
     var API_KEY = 'AIzaSyD_QGTYXyt9cEtdpJWLnL_M8UrVXeVKxtY';
     var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
     var SCOPES = "https://www.googleapis.com/auth/spreadsheets"
@@ -325,15 +337,3 @@ $(function() {
     function updateSigninStatus(isSignedIn) {
         console.log("signed in")
     }
-    $('#modal-back').click(function(){
-        $("#myModal").hide()
-        App.init();
-    })
-    $('#modal-confirm').click(function(){
-        console.log("CODE LOGGED")
-        $("#myModal").hide()
-        App.init();
-    })
-
-});
-
