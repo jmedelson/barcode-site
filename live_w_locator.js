@@ -341,7 +341,7 @@ function initClient(){
 }
 function updateSigninStatus(isSignedIn) {
     console.log("signed in")
-    readSheet()
+    appendSheet('999888777')
 }
 function readSheet(){
     gapi.client.sheets.spreadsheets.values.get({
@@ -353,6 +353,7 @@ function readSheet(){
     })
 }
 function appendSheet(barcode){
+    console.log("APPENDING")
     var body={
         values:[[barcode]]
     }
