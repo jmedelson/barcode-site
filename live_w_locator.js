@@ -303,5 +303,10 @@ $(function() {
 
 $('#modal-back').click(function(){
     $("#myModal").hide()
-    Quagga.start();
+    App.init();
+})
+$('#modal-confirm').click(function(){
+    console.log("CODE LOGGED")
+    $("#myModal").hide()
+    App.init();
 })
