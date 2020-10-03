@@ -286,11 +286,11 @@ $(function() {
             App.lastResult = code;
             console.log("Code:" + code);
             var $node = null, canvas = Quagga.canvas.dom.image;
-            // Quagga.stop()
+            
             $('#scanned-code').text(code)
             $('#myModal').show();
             $('#modal-image').css("background-image","url(" +canvas.toDataURL()+")")
-            
+            Quagga.stop()
 
             $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
             $node.find("img").attr("src", canvas.toDataURL());
@@ -300,3 +300,8 @@ $(function() {
     });
 
 });
+
+$('#modal-back').click(function(){
+    $("#myModal").hide()
+    Quagga.start();
+})
