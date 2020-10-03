@@ -341,3 +341,12 @@ function initClient(){
 function updateSigninStatus(isSignedIn) {
     console.log("signed in")
 }
+function readSheet(){
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1YGZdhlF-chiA6HaYvCeNHL8MBujoDBEtL3P7efjZWWE',
+        range: 'A1'
+    }).then((response)=>{
+        var result = response.result;
+        console.log("RESULT----------------", result)
+    })
+}
