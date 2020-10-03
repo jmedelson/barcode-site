@@ -287,7 +287,7 @@ $(function() {
             console.log(code);
             // Quagga.stop()
             $('#scanned-code').innerHTML = code;
-            $('$myModal').show();
+            $('#myModal').show();
             $('modal-image').css("background-image","url(" +canvas.toDataURL()+")")
             var $node = null, canvas = Quagga.canvas.dom.image;
 
