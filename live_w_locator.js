@@ -341,6 +341,7 @@ function initClient(){
 }
 function updateSigninStatus(isSignedIn) {
     console.log("signed in")
+    readSheet()
     appendSheet('999888777')
 }
 function readSheet(){
