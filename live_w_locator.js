@@ -289,7 +289,7 @@ $(function() {
             // Quagga.stop()
             $('#scanned-code').text(code)
             $('#myModal').show();
-            // $('#modal-image').css("background-image","url(" +canvas.toDataURL()+")")
+            $('#modal-image').css("background-image","url(" +canvas.toDataURL()+")")
             
 
             $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
