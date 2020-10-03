@@ -285,7 +285,7 @@ $(function() {
         if (App.lastResult !== code) {
             App.lastResult = code;
             console.log(code);
-            Quagga.stop()
+            // Quagga.stop()
             $('#scanned-code').innerHTML = code;
             $('$myModal').show();
             $('modal-image').css("background-image","url(" +canvas.toDataURL()+")")
