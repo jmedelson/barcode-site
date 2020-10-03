@@ -359,7 +359,9 @@ function appendSheet(barcode){
     gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: '1YGZdhlF-chiA6HaYvCeNHL8MBujoDBEtL3P7efjZWWE',
         range: 'A1',
-        resource: body
+        resource: body,
+        valueInputOption: 'USER_ENTERED',
+        insertDataOption: 'OVERWRITE'
     }).then((response) => {
         var result = response.result;
         console.log(`${result.updates.updatedCells} cells appended.`)
