@@ -343,3 +343,8 @@ i.icon-24-scan {
   background-repeat: no-repeat;
   margin: auto;
 }
+
+.modal-text{
+  font-size: 20px;
+  display: inline-block;
+}
