@@ -340,6 +340,7 @@ function initClient(){
 }
 function updateSigninStatus(isSignedIn) {
     console.log("signed in")
+    readSheet()
 }
 function readSheet(){
     gapi.client.sheets.spreadsheets.values.get({
