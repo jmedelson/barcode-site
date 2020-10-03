@@ -305,6 +305,7 @@ $(function() {
     })
     $('#modal-confirm').click(function(){
         console.log("CODE LOGGED")
+        appendSheet(barcode)
         $("#myModal").hide()
         App.init();
     })
@@ -347,7 +348,20 @@ function readSheet(){
         spreadsheetId: '1YGZdhlF-chiA6HaYvCeNHL8MBujoDBEtL3P7efjZWWE',
         range: 'A1'
     }).then((response)=>{
-        var result = response.result;
+        var result = response.result.values;
         console.log("RESULT----------------", result)
     })
+}
+function appendSheet(barcode){
+    var body={
+        values:[[barcode]]
+    }
+    gapi.client.sheets.spreadsheets.values.append({
+        spreadsheetId: '1YGZdhlF-chiA6HaYvCeNHL8MBujoDBEtL3P7efjZWWE',
+        range: 'A1',
+        resource: body
+    }).then((response) => {
+        var result = response.result;
+        console.log(`${result.updates.updatedCells} cells appended.`)
+    });
 }
