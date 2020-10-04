@@ -315,7 +315,7 @@ $(function() {
 var CLIENT_ID = '848398558010-6tk577vios00fvgkl94p8mv1a4mbthe5.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyD_QGTYXyt9cEtdpJWLnL_M8UrVXeVKxtY';
 var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
-var SCOPES = "https://www.googleapis.com/auth/drive"
+var SCOPES = "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/script.external_request"
 function handleClientLoad() {
     console.log("HANDLE CLIENT LOAD")
     gapi.load('client:auth2', initClient);
@@ -342,6 +342,8 @@ function initClient(){
     
 }
 function updateSigninStatus(isSignedIn) {
+    console.log("Beginiing sign in")
+    gapi.auth2.getAuthInstance().signIn();
     console.log("signed in")
     readSheet()
     appendSheet('999888777')
