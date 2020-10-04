@@ -346,7 +346,6 @@ function updateSigninStatus(isSignedIn) {
     gapi.auth2.getAuthInstance().signIn();
     console.log("signed in")
     readSheet()
-    appendSheet('999888777')
 }
 function readSheet(){
     gapi.client.sheets.spreadsheets.values.get({
@@ -367,7 +366,7 @@ function appendSheet(barcode){
     }
     var valueRangeBody = {
         // TODO: Add desired properties to the request body.
-        "values": [['93748573']]
+        "values": [[barcode]]
     };
     var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
     request.then(function(response) {
