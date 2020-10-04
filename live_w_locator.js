@@ -1,3 +1,4 @@
+var GoogleAuth;
 $(function() {
     var resultCollector = Quagga.ResultCollector.create({
         capture: true,
@@ -314,7 +315,7 @@ $(function() {
 var CLIENT_ID = '848398558010-6tk577vios00fvgkl94p8mv1a4mbthe5.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyD_QGTYXyt9cEtdpJWLnL_M8UrVXeVKxtY';
 var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
-var SCOPES = "https://www.googleapis.com/auth/spreadsheets"
+var SCOPES = "https://www.googleapis.com/auth/drive"
 function handleClientLoad() {
     console.log("HANDLE CLIENT LOAD")
     gapi.load('client:auth2', initClient);
@@ -327,12 +328,13 @@ function initClient(){
         discoveryDocs: DISCOVERY_DOCS,
         scope: SCOPES
     }).then(function () {
+        GoogleAuth = gapi.auth2.getAuthInstance()
         // Listen for sign-in state changes.
         console.log("HANDLE CLIENT LISTEN")
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+        GoogleAuth.isSignedIn.listen(updateSigninStatus);
 
         // Handle the initial sign-in state.
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+        updateSigninStatus(GoogleAuth.isSignedIn.get());
         }, function(error) {
             console.log("HANDLE AUTH ERROR")
             console.log(JSON.stringify(error, null, 2));
@@ -355,17 +357,22 @@ function readSheet(){
 }
 function appendSheet(barcode){
     console.log("APPENDING")
-    var body={
-        values:[[barcode]]
-    }
-    gapi.client.sheets.spreadsheets.values.append({
+    var params = {
         spreadsheetId: '1YGZdhlF-chiA6HaYvCeNHL8MBujoDBEtL3P7efjZWWE',
         range: 'A1',
-        resource: body,
         valueInputOption: 'USER_ENTERED',
         insertDataOption: 'OVERWRITE'
-    }).then((response) => {
-        var result = response.result;
-        console.log(`${result.updates.updatedCells} cells appended.`)
+    }
+    var valueRangeBody = {
+        // TODO: Add desired properties to the request body.
+        "values": [['93748573']]
+    };
+    var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+    request.then(function(response) {
+        // TODO: Change code below to process the `response` object:
+        console.log(response.result);
+    }, 
+    function(reason) {
+        console.error('error: ' + reason.result.error.message);
     });
 }
